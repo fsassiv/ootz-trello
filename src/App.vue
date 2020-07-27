@@ -1,5 +1,5 @@
 <template>
-  <div id="app">Ootz Trello</div>
+  <router-view></router-view>
 </template>
 
 <script>
