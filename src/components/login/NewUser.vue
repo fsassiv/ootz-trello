@@ -4,18 +4,22 @@
       :inputType="'text'"
       :inputName="'name'"
       :placeholder="'Nome'"
+      :required="true"
       @inputChange="handleInputChange"
     />
     <input-field
       :inputType="'email'"
       :inputName="'email'"
       :placeholder="'Email'"
+      :required="true"
+      :class="{ 'is-error': emailRegistered }"
       @inputChange="handleInputChange"
     />
     <input-field
       :inputType="'password'"
       :inputName="'password'"
       :placeholder="'Senha'"
+      :required="true"
       :class="{ 'is-error': !passwordMatch }"
       @inputChange="handleInputChange"
     />
@@ -23,6 +27,7 @@
       :inputType="'password'"
       :inputName="'passwordconfirmation'"
       :placeholder="'Confirmação de senha'"
+      :required="true"
       :class="{ 'is-error': !passwordMatch }"
       @inputChange="handleInputChange"
     />
@@ -33,6 +38,7 @@
 
 <script>
 import InputField from "../forms/Input";
+import { createNewUser } from "../../../utils/user";
 
 export default {
   name: "new-user-form",
@@ -44,33 +50,38 @@ export default {
         password: "",
         passwordconfirmation: ""
       },
-      passwordMatch: true
+      passwordMatch: true,
+      emailRegistered: false
     };
   },
   methods: {
     handleSubmit() {
       if (this.passwordMatch) {
-        console.log("Submit");
+        const response = createNewUser(this.user);
+        if (response.error) {
+          this.emailRegistered = true;
+          return;
+        }
+        this.$router.push("dashboard");
       }
     },
     handleInputChange({ name, value }) {
       this.user[name] = value;
+    },
+    validatePassword() {
+      if (this.user.password !== this.user.passwordconfirmation) {
+        this.passwordMatch = false;
+        return;
+      }
+      this.passwordMatch = true;
     }
   },
   watch: {
     ["user.password"](value) {
-      if (this.user.password !== this.user.passwordconfirmation) {
-        this.passwordMatch = false;
-        return;
-      }
-      this.passwordMatch = true;
+      this.validatePassword();
     },
     ["user.passwordconfirmation"](value) {
-      if (this.user.password !== this.user.passwordconfirmation) {
-        this.passwordMatch = false;
-        return;
-      }
-      this.passwordMatch = true;
+      this.validatePassword();
     }
   },
   components: {
