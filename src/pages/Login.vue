@@ -1,10 +1,29 @@
 <template>
-  <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi quam cumque perspiciatis? Ratione dolore consequuntur voluptate, id tenetur voluptatum animi rem voluptates! Repudiandae dolores, perspiciatis nostrum recusandae eum dicta quas.</div>
+  <div class="login">
+    <main-header />
+    <div class="login-content">
+      <div class="columns">
+        <div class="column col-4 col-sm-8 col-mx-auto">
+          <login-form v-if="$route.path==='/' || $route.path==='/login'" />
+          <new-user-form v-if="$route.path==='/sign-up'" />
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-export default {};
+import LoginForm from "../components/login/Login.vue";
+import NewUserForm from "../components/login/NewUser.vue";
+import MainHeader from "../components/header/MainHeader";
+
+export default {
+  components: {
+    LoginForm,
+    NewUserForm,
+    MainHeader,
+  },
+};
 </script>
 
-<style>
-</style>
+<style></style>
