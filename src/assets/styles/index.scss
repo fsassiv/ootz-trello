@@ -2,3 +2,9 @@
 @import "./mixins//responsiveness.scss";
 @import "./miscellaneous/reset";
 @import "./miscellaneous/spectre-reset";
+
+//Components
+@import "./components/main-header";
+
+// Pages
+@import "./pages/login/login";

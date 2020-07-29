@@ -40,8 +40,11 @@ export const logUser = credentials => {
     user => user.email === email && bcrypt.compareSync(password, user.password)
   );
 
-  setCurrentSession({ ...registeredUser[0] });
-  return registeredUser;
+  if (registeredUser.length > 0) {
+    setCurrentSession({ ...registeredUser[0] });
+    return { ...registeredUser[0] };
+  }
+  return { error: "User not registerd or invalid Email/Password" };
 };
 
 export const setCurrentSession = ({ id, name, email, theme }) => {

@@ -1,5 +1,6 @@
 <template>
   <form class="form-group" @submit.prevent="handleSubmit">
+    <h2>Cadastro</h2>
     <input-field
       :inputType="'text'"
       :inputName="'name'"
@@ -31,7 +32,7 @@
       :class="{ 'is-error': !passwordMatch }"
       @inputChange="handleInputChange"
     />
-    <button class="btn" type="button">Cancelar</button>
+    <router-link to="/login" class="btn" type="button">Cancelar</router-link>
     <button class="btn btn-primary" type="submit">Cadastrar</button>
   </form>
 </template>
@@ -48,10 +49,10 @@ export default {
         name: "",
         email: "",
         password: "",
-        passwordconfirmation: ""
+        passwordconfirmation: "",
       },
       passwordMatch: true,
-      emailRegistered: false
+      emailRegistered: false,
     };
   },
   methods: {
@@ -74,7 +75,7 @@ export default {
         return;
       }
       this.passwordMatch = true;
-    }
+    },
   },
   watch: {
     ["user.password"](value) {
@@ -82,11 +83,11 @@ export default {
     },
     ["user.passwordconfirmation"](value) {
       this.validatePassword();
-    }
+    },
   },
   components: {
-    InputField
-  }
+    InputField,
+  },
 };
 </script>
 

@@ -21,7 +21,7 @@ const routes = new Router({
     {
       path: "/login",
       name: "Login",
-      alias: "/",
+      alias: ["/", "/sign-up"],
       component: Login,
       meta: {
         privateRoute: false
@@ -38,7 +38,7 @@ const routes = new Router({
   ]
 });
 
-routes.beforeEach((to, from, next) => {
+routes.beforeEach((to, _from, next) => {
   if (to.meta.privateRoute) {
     if (sessionStorage.getItem("currentSession")) {
       next();
