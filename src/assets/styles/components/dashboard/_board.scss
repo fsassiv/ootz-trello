@@ -1,0 +1,16 @@
+.board {
+  height: 85vh;
+  max-height: 85vh;
+  padding: 10px;
+  overflow: auto;
+  display: flex;
+  align-items: flex-start;
+  @include minWidth($md) {
+    height: 80vh;
+    max-height: 80vh;
+  }
+  @include minWidth($lg) {
+    height: 75vh;
+    max-height: 75vh;
+  }
+}

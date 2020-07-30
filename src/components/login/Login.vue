@@ -23,6 +23,8 @@
 <script>
 import InputField from "../forms/Input";
 import { logUser } from "../../../utils/user";
+import methods from "../../mixins/methods";
+
 export default {
   name: "log-user",
   data() {
@@ -33,6 +35,7 @@ export default {
       },
     };
   },
+  mixins: [methods],
   methods: {
     handleSubmit() {
       const response = logUser(this.user);
@@ -42,9 +45,6 @@ export default {
         return;
       }
       this.$router.push("/dashboard");
-    },
-    handleInputChange({ name, value }) {
-      this.user[name] = value;
     },
   },
   components: {

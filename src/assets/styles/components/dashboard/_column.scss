@@ -1,0 +1,55 @@
+.board-column {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 15px;
+  border-radius: 5px;
+  min-width: 250px;
+  width: 250px;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25);
+  transition: all linear 0.25s;
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+  &.ondrag {
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: none;
+  }
+  &__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__content {
+    list-style: none;
+    margin: 0;
+    margin-top: 10px;
+  }
+  &__label {
+    cursor: pointer;
+    padding: 4px;
+    width: 75%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    margin: 0;
+    transition: background-color linear 0.25s;
+    background-color: rgba(0, 0, 0, 0);
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+  &__add-column-btn {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 15px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    i {
+      margin-right: 10px;
+    }
+  }
+}

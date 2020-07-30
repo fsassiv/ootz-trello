@@ -2,9 +2,17 @@
 @import "./mixins//responsiveness.scss";
 @import "./miscellaneous/reset";
 @import "./miscellaneous/spectre-reset";
+@import "./miscellaneous/util";
 
 //Components
 @import "./components/main-header";
 
+//Compontens - Dashboard
+@import "./components/dashboard/board";
+@import "./components/dashboard/column";
+@import "./components/dashboard/card";
+@import "./components/dashboard/pop-over";
+
 // Pages
 @import "./pages/login/login";
+@import "./pages/dashboard/dashboard";

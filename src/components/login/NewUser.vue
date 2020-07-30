@@ -40,6 +40,7 @@
 <script>
 import InputField from "../forms/Input";
 import { createNewUser } from "../../../utils/user";
+import methods from "../../mixins/methods";
 
 export default {
   name: "new-user-form",
@@ -55,6 +56,7 @@ export default {
       emailRegistered: false,
     };
   },
+  mixins: [methods],
   methods: {
     handleSubmit() {
       if (this.passwordMatch) {
@@ -65,9 +67,6 @@ export default {
         }
         this.$router.push("dashboard");
       }
-    },
-    handleInputChange({ name, value }) {
-      this.user[name] = value;
     },
     validatePassword() {
       if (this.user.password !== this.user.passwordconfirmation) {
