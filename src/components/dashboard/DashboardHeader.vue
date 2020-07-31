@@ -3,8 +3,8 @@
     <p>
       Bem vinda(o), <b>{{ user.name }}</b>
     </p>
-    <button @click="$emit('create-column')" class="btn btn-primary">
-      Criar coluna
+    <button @click="$emit('create-frame')" class="btn btn-primary">
+      Criar frame
     </button>
   </div>
 </template>

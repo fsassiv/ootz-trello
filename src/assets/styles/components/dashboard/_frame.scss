@@ -1,4 +1,4 @@
-.board-column {
+.board-frame {
   background-color: rgba(255, 255, 255, 0.9);
   padding: 15px;
   border-radius: 5px;
@@ -25,6 +25,7 @@
     list-style: none;
     margin: 0;
     margin-top: 10px;
+    min-height: 40px;
   }
   &__label {
     cursor: pointer;
@@ -39,7 +40,7 @@
       background-color: rgba(0, 0, 0, 0.1);
     }
   }
-  &__add-column-btn {
+  &__add-frame-btn {
     display: flex;
     align-items: center;
     background-color: white;

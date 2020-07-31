@@ -5,8 +5,8 @@
     </button>
     <div class="popover-container">
       <div class="card">
-        <button class="btn btn-primary">Adicionar Card</button>
-        <button class="btn btn-error">Excluir coluna</button>
+        <button class="btn btn-primary">Adicionar Todo</button>
+        <button class="btn btn-error">Excluir Frame</button>
       </div>
     </div>
   </div>
@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  name: "pop-over",
+  name: "pop-over"
 };
 </script>
 

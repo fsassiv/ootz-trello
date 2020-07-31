@@ -12,11 +12,6 @@ import MainHeader from "./components/header/MainHeader";
 
 export default {
   name: "app",
-  data() {
-    return {
-      msg: "Welcome to Your Vue.js App"
-    };
-  },
   components: {
     MainHeader
   }

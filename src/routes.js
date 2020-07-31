@@ -19,9 +19,9 @@ const routes = new Router({
   mode: "history",
   routes: [
     {
-      path: "/login",
+      path: "/",
       name: "Login",
-      alias: ["/", "/sign-up"],
+      alias: ["/login", "/sign-up"],
       component: Login,
       meta: {
         privateRoute: false

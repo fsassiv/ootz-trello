@@ -2,7 +2,7 @@
   <div class="login">
     <div class="login-content">
       <div class="columns">
-        <div class="column col-4 col-sm-8 col-mx-auto">
+        <div class="column col-3 col-sm-8 col-lg-4 col-mx-auto">
           <login-form v-if="$route.path === '/' || $route.path === '/login'" />
           <new-user-form v-if="$route.path === '/sign-up'" />
         </div>
@@ -18,8 +18,8 @@ import NewUserForm from "../components/login/NewUser.vue";
 export default {
   components: {
     LoginForm,
-    NewUserForm
-  }
+    NewUserForm,
+  },
 };
 </script>
 
