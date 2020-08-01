@@ -3,7 +3,10 @@
     <p>
       Bem vinda(o), <b>{{ user.name }}</b>
     </p>
-    <button @click="$emit('create-frame')" class="btn btn-primary">
+    <button
+      @click="$store.commit('modals/TOGGLE_ADD_FRAME_STATE')"
+      class="btn btn-primary"
+    >
       Criar frame
     </button>
   </div>

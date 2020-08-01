@@ -1,3 +1,4 @@
 export default {
-  setTodos: "SET_TODOS"
+  setTodos: "SET_TODOS",
+  deleteTodo: "DELETE_TODO"
 };

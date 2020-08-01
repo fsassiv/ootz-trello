@@ -1,3 +1,4 @@
 export default {
-  setFramesAsync: "setFramesAsync"
+  setFramesAsync: "setFramesAsync",
+  addFrameAsync: "addFrameAsync"
 };

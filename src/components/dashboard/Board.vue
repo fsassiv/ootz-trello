@@ -1,8 +1,16 @@
 <template>
+  <div class="board__no-frames" v-if="frames.length === 0">
+    <h1>Não há quadros cadastros.</h1>
+    <button
+      class="btn btn-primary"
+      @click="$store.commit('modals/TOGGLE_ADD_FRAME_STATE')"
+    >Criar frame</button>
+  </div>
   <draggable
-    v-model="list"
+    v-else
+    v-model="frames"
     class="board"
-    handle=".board-column__label"
+    handle=".board-frame__label"
     @start="drag = true"
     @end="drag = false"
   >
@@ -13,16 +21,19 @@
     >
       <Frame
         :onDrag="drag"
-        v-for="item in list"
-        :key="item.title"
-        :title="item.title"
-        :cards="item.cards"
+        v-for="frame in frames"
+        :key="frame.id"
+        :frame="frame"
+        :todos="frame.todos"
       />
     </transition-group>
   </draggable>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+import framesGettersTypes from "../../store/frames/getters.types";
+import framesStore from "../../mixins/frames.store";
 import Frame from "./Frame";
 import draggable from "vuedraggable";
 
@@ -30,47 +41,34 @@ export default {
   name: "board",
   data() {
     return {
-      list: [
-        {
-          title: "One",
-          content: "text para One",
-          cards: [
-            { title: "Card One", open: true },
-            { title: "Card Two", open: false }
-          ]
-        },
-        {
-          title: "Two",
-          content: "text para Two",
-          cards: [{ title: "Card Slipknot" }]
-        },
-        {
-          title: "Three",
-          content: "text para Three",
-          cards: [{ title: "Nadine" }, { title: "Flavio" }]
-        }
-      ],
       drag: false,
       options: {
         dropzoneSelector: "ul",
-        draggableSelector: "li"
-      }
+        draggableSelector: "li",
+      },
     };
   },
+  mounted() {
+    this.setFramesAsync();
+  },
+  mixins: [framesStore],
   computed: {
+    ...mapGetters("frames", {
+      frames: framesGettersTypes.getFrames,
+    }),
     dragOptions() {
       return {
         animation: 200,
         group: "description",
         disabled: false,
-        ghostClass: "ghost"
+        ghostClass: "ghost",
       };
-    }
+    },
   },
   components: {
     Frame,
-    draggable
-  }
+    draggable,
+  },
 };
 </script>
 

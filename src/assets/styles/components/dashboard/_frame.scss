@@ -24,8 +24,8 @@
   &__content {
     list-style: none;
     margin: 0;
-    margin-top: 10px;
-    min-height: 40px;
+    margin-top: 5px;
+    min-height: 20px;
   }
   &__label {
     cursor: pointer;
@@ -36,6 +36,7 @@
     margin: 0;
     transition: background-color linear 0.25s;
     background-color: rgba(0, 0, 0, 0);
+    font-weight: bold;
     &:hover {
       background-color: rgba(0, 0, 0, 0.1);
     }

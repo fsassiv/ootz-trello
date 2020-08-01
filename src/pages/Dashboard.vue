@@ -1,17 +1,18 @@
 <template>
   <div class="dashboard">
-    <dashboard-header :user="user" @create-frame="handleCreateFrame" />
+    <dashboard-header :user="user" />
     <board />
+    <add-todo-modal />
+    <add-frame-modal />
   </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import gettersTypes from "../store/frames/getters.types";
-import framesStore from "../mixins/frames.store";
+import { getCurrentSession } from "../../utils/user";
 import DashboardHeader from "../components/dashboard/DashboardHeader";
 import Board from "../components/dashboard/Board";
-import { getCurrentSession } from "../../utils/user";
+import AddTodoModal from "../components/modals/AddTodo";
+import AddFrameModal from "../components/modals/AddFrame";
 
 export default {
   name: "dashboard",
@@ -22,22 +23,12 @@ export default {
   },
   mounted() {
     this.user = getCurrentSession();
-    this.setFramesAsync();
-  },
-  mixins: [framesStore],
-  methods: {
-    handleCreateFrame() {
-      console.log("Create frame");
-    }
-  },
-  computed: {
-    ...mapGetters("frames", {
-      frames: gettersTypes.getFrames
-    })
   },
   components: {
     DashboardHeader,
-    Board
+    Board,
+    AddTodoModal,
+    AddFrameModal
   }
 };
 </script>

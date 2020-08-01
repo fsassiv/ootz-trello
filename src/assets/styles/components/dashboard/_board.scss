@@ -13,4 +13,11 @@
     height: 75vh;
     max-height: 75vh;
   }
+  &__no-frames {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10vh;
+  }
 }

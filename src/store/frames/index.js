@@ -16,7 +16,7 @@ export default {
       api
         .get("/frames")
         .then(({ data }) => {
-          commit(mutationsTypes.setFrames, data);
+          commit(mutationsTypes.setFrames, data.data);
         })
         .catch(console.error);
     }
