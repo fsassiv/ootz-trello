@@ -3,7 +3,7 @@
     <div class="board-frame__head">
       <h5 class="board-frame__label">{{ frame.title }}</h5>
       <button class="btn tooltip" data-tooltip="Excluir Frame" @click="handleDeleteFrame">
-        <i class="icon icon-close"></i>
+        <i class="icon icon-close primary-color"></i>
       </button>
     </div>
     <draggable
@@ -16,7 +16,7 @@
       <todo :id="todo.id" v-for="todo in todos" :key="todo.id" :todo="todo" />
     </draggable>
     <button
-      class="board-frame__add-frame-btn"
+      class="board-frame__add-frame-btn primary-bg-color"
       @click="$store.commit('modals/TOGGLE_ADD_TODO_STATE', frame.id)"
     >
       <i class="icon icon-plus"></i>

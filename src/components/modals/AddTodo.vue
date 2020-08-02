@@ -1,14 +1,6 @@
 <template>
-  <div
-    class="modal modal-sm"
-    :class="{ active: $store.state.modals.addTodoIsActive }"
-  >
-    <a
-      href="#close"
-      class="modal-overlay"
-      @click.prevent="handleCloseModal"
-      aria-label="Close"
-    ></a>
+  <div class="modal modal-sm" :class="{ active: $store.state.modals.addTodoIsActive }">
+    <a href="#close" class="modal-overlay" @click.prevent="handleCloseModal" aria-label="Close"></a>
     <div class="modal-container">
       <div class="modal-header">
         <a
@@ -25,7 +17,8 @@
         v-model="title"
         id="todo-name"
         name="todo-name"
-        placeholder="Nome da tarefa"
+        placeholder="Título da tarefa"
+        ref="title"
       />
       <textarea
         class="form-input"
@@ -34,12 +27,8 @@
         v-model="description"
       ></textarea>
       <div class="modal-footer">
-        <button class="btn" @click="handleCloseModal">
-          Cancelar
-        </button>
-        <button class="btn btn-primary" @click="handleAddTodo">
-          Adicionar
-        </button>
+        <button class="btn" @click="handleCloseModal">Cancelar</button>
+        <button class="btn btn-primary" @click="handleAddTodo">Adicionar</button>
       </div>
     </div>
   </div>
@@ -56,13 +45,20 @@ export default {
   data() {
     return {
       title: "",
-      description: ""
+      description: "",
     };
   },
   computed: {
     ...mapGetters("modals", {
-      addTodoTo: modalGettersTypes.addTodoTo
-    })
+      addTodoTo: modalGettersTypes.addTodoTo,
+    }),
+  },
+  watch: {
+    modalState(newValue, prevValue) {
+      if (newValue) {
+        this.$refs.title.focus();
+      }
+    },
   },
   mixins: [framesStore],
   methods: {
@@ -78,13 +74,13 @@ export default {
           description: this.description,
           frame_id: this.addTodoTo,
           open: true,
-          order: 0
+          order: 0,
         })
-        .then(data => this.setFramesAsync())
+        .then((data) => this.setFramesAsync())
         .catch(console.error);
       this.handleCloseModal();
-    }
-  }
+    },
+  },
 };
 </script>
 

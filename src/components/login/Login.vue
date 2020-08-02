@@ -24,6 +24,7 @@
 import InputField from "../forms/Input";
 import { logUser } from "../../../utils/user";
 import methods from "../../mixins/methods";
+import rootMutationsTypes from "../../store/mutations.types.js";
 
 export default {
   name: "log-user",
@@ -36,12 +37,18 @@ export default {
     };
   },
   mixins: [methods],
+  beforeDestroy() {
+    this.$store.commit(rootMutationsTypes.hideToast);
+  },
   methods: {
     handleSubmit() {
       const response = logUser(this.user);
 
       if (response.error) {
-        //display toast
+        this.$store.commit(rootMutationsTypes.showToast, {
+          type: "error",
+          message: response.error,
+        });
         return;
       }
       this.$router.push("/dashboard");

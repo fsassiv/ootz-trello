@@ -18,8 +18,20 @@ export default {
   name: "dashboard",
   data() {
     return {
-      user: {}
+      user: {},
     };
+  },
+  watch: {
+    user(userProps) {
+      const themeLink = document.querySelector("#theme-link");
+      if (this.user.theme === "dark") {
+        themeLink.href = "/dist/theme/dark-theme.css";
+        document.querySelector("body").classList.add("dark");
+      } else {
+        themeLink.href = "/dist/theme/light-theme.css";
+        document.querySelector("body").classList.remove("dark");
+      }
+    },
   },
   mounted() {
     this.user = getCurrentSession();
@@ -28,8 +40,8 @@ export default {
     DashboardHeader,
     Board,
     AddTodoModal,
-    AddFrameModal
-  }
+    AddFrameModal,
+  },
 };
 </script>
 

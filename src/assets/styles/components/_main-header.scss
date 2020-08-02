@@ -1,5 +1,12 @@
 .main-header {
   padding-top: 20px;
   padding-bottom: 20px;
-  background-color: rgba(255, 255, 255, 0.75);
+  .form-group {
+    margin: 0;
+    margin-right: 15px;
+  }
+  &__options {
+    display: flex;
+    align-items: center;
+  }
 }

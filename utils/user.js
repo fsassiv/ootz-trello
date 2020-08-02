@@ -44,13 +44,12 @@ export const logUser = credentials => {
     setCurrentSession({ ...registeredUser[0] });
     return { ...registeredUser[0] };
   }
-  return { error: "User not registerd or invalid Email/Password" };
+  return { error: "Usuário não registrato ou Email/Senha inválidos" };
 };
 
 export const setCurrentSession = ({ id, name, email, theme }) => {
   const session = JSON.stringify({ id, name, email, theme });
 
-  //set to the localStorage
   sessionStorage.setItem("currentSession", session);
 };
 
@@ -62,14 +61,22 @@ export const logOut = () => {
   sessionStorage.removeItem("currentSession");
 };
 
-export const updateUserTheme = id => {
+export const updateUserTheme = currentTheme => {
   const userDB = JSON.parse(localStorage.getItem("users"));
+  const currentUser = getCurrentSession();
 
   const updatedUserDB = userDB.map(user => {
-    if (user.id === id) {
-      user.theme === "light" ? (user.theme = "dark") : (user.theme = "light");
+    if (user.id === currentUser.id) {
+      setCurrentSession({
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        theme: currentTheme
+      });
+      return { ...user, theme: currentTheme };
     }
+    return user;
   });
 
-  localStorage.setItem("users", updatedUserDB);
+  localStorage.setItem("users", JSON.stringify(updatedUserDB));
 };

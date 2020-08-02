@@ -1,6 +1,7 @@
 //spect-css styling reset
 textarea {
   resize: none;
+  color: #414141;
 }
 
 .container {
@@ -12,6 +13,11 @@ textarea {
 
 .form-input {
   margin-bottom: 10px;
+}
+
+.form-group,
+.form-switch {
+  margin: 0;
 }
 
 .form-checkbox {

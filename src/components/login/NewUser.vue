@@ -41,6 +41,7 @@
 import InputField from "../forms/Input";
 import { createNewUser } from "../../../utils/user";
 import methods from "../../mixins/methods";
+import rootMutationsTypes from "../../store/mutations.types.js";
 
 export default {
   name: "new-user-form",
@@ -57,12 +58,19 @@ export default {
     };
   },
   mixins: [methods],
+  beforeDestroy() {
+    this.$store.commit(rootMutationsTypes.hideToast);
+  },
   methods: {
     handleSubmit() {
       if (this.passwordMatch) {
         const response = createNewUser(this.user);
         if (response.error) {
           this.emailRegistered = true;
+          this.$store.commit(rootMutationsTypes.showToast, {
+            type: "error",
+            message: "Email já cadastrado",
+          });
           return;
         }
         this.$router.push("dashboard");

@@ -1,6 +1,6 @@
 <template>
   <li class="board-todo">
-    <div class="board-todo__content" :class="{ open: !todo.open }">
+    <div class="board-todo__content" :class="todo.open?'success-bg-color ':'error-bg-color' ">
       <div class="board-todo__head">
         <p class="board-todo__title">{{ todo.title }}</p>
         <i @click="deleteTodo" class="icon icon-close"></i>
