@@ -1,18 +1,23 @@
 # ootz-trello
 
-> A Vue.js project
+> Flávio Andrade
 
-## Build Setup
+### INSTRUÇÕES
 
-``` bash
-# install dependencies
-npm install
+Para instalar as dependências do projeto
 
-# serve with hot reload at localhost:8080
-npm run dev
+`npm install`
 
-# build for production with minification
-npm run build
-```
+Para executar aplicação na porta 5000
 
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+`npm run dev`
+
+### PROCESSOS
+
+LOGIN
+
+![](docs/login.gif)
+
+CRAAÇÃO DE FRAMS E TAREFAS
+
+![](docs/process.gif)
