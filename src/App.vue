@@ -13,8 +13,8 @@ import MainHeader from "./components/header/MainHeader";
 export default {
   name: "app",
   components: {
-    MainHeader,
-  },
+    MainHeader
+  }
 };
 </script>
 
