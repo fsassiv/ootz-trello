@@ -3,7 +3,7 @@ import axios from "axios";
 const api = axios.create({
   baseURL: "http://api.todo.ootz.com.br",
   headers: {
-    apiKey: ""
+    apiKey: "___CHAVE___"
   }
 });
 
