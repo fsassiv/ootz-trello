@@ -16,9 +16,9 @@ OBS: Antes de iniciar a aplicação, substituir no arquivlo service/api.js o **\
 ### PROCESSOS
 
 LOGIN
-
+"
 ![](docs/login.gif)
 
-CRAAÇÃO DE FRAMS E TAREFAS
+CRIAÇÃO DE FRAMES E TAREFAS
 
 ![](docs/process.gif)
